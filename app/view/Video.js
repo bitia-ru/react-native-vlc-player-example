@@ -90,123 +90,13 @@ class Video extends Component<Props> {
     let { isFull } = this.state;
     return (
       <View  style={[styles.container,{marginTop: isFull ? 0 :  40 }]}>
-        {
-          !isFull &&
-          <TouchableOpacity onPress={()=>{
-          navigation.goBack();
-        }}><Text>返回</Text>
-          </TouchableOpacity>
-        }
-        {!isFull && <View style={{alignItems:'center',marginBottom:20}}>
-          <TouchableOpacity
-            style={{justifyContent:'center',alignItems:'center',height:40,width:200,backgroundColor:'green'}}
-            onPress={this.closeAuto}>
-            <Text style={{color:'#fff'}}>{this.state.isScroll ? '关闭自动滚动' : '开启自动滚动'}</Text>
-          </TouchableOpacity>
-        </View>
-        }
-
-        <ScrollView
-          ref={(ref)=>this.scrollRef = ref}
-          style={{flex:1}}
-          scrollEnabled={isFull ? false : true}
-          contentContainerStyle={{
-           flex: isFull ? 1: 0,
-           justifyContent: 'center',
-           alignItems: 'center',
-        }}
-        >
-          <Text style={{marginTop:10}}>RTMP协议直播源,自动reload</Text>
-          <VlcSimplePlayer
-            url={"http://hdl3.douyucdn.cn/live"}
-            isLive={true}
-            autoReloadLive={true}
-            Orientation={Orientation}
-            style={{width:'80%'}}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-          />
-
-          <Text style={{marginTop:10}}>RTMP协议直播源,非自动reload</Text>
-          <VlcSimplePlayer
-            url={"rtmp://live.hkstv.hk.lxdns.com/live/hks"}
-            isLive={true}
-            autoReloadLive={false}
-            Orientation={Orientation}
-            style={{width:'80%'}}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-          />
-
-          <Text style={{marginTop:20}}>广告、标题示例</Text>
-          <VlcSimplePlayer
-            url={"http://bxyzvideo.doctorz.cn:8080/add2019/9.mp4"}
-            Orientation={Orientation}
-            style={{width:'80%'}}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-            showAd={true}
-            reloadWithAd={true}
-            adUrl={require('../resource/1.mp4')}
-            showTop={true}
-            showBack={true}
-            onLeftPress={()=>{alert('点击了返回按钮')}}
-            showTitle={true}
-            title={"标题显示"}
-          />
-
-
-          <Text style={{marginTop:20}}>vip示例</Text>
-          <VlcSimplePlayer
-            url={"http://bxyzvideo.doctorz.cn:8080/add2019/9.mp4"}
-            Orientation={Orientation}
-            style={{width:'80%'}}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-            useVip={true}
-            vipPlayLength={180}
-            onVipPress={()=>{alert('正在购买中...')}}
-
-          />
-
-          <Text style={{marginTop:20}}>本地资源</Text>
-          <VlcSimplePlayer
-            style={{width:'80%'}}
-            url={require('../resource/1.mp4')}
-            Orientation={Orientation}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-          />
-
-          <Text style={{marginTop:20}}>本地资源,竖屏</Text>
-          <VlcSimplePlayer
-            style={{width:'80%'}}
-            url={require('../resource/1.mp4')}
-            //Orientation={Orientation}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-          />
-
-          <Text style={{marginTop:20}}>rtsp</Text>
-          <VlcSimplePlayer
-            style={{width:'80%'}}
-            url={"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov"}
-            //Orientation={Orientation}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-          />
-
-         {/* <Text style={{marginTop:20}}>HTTP协议直播源(无法暂停)</Text>
-          <VlcSimplePlayer
-            style={{width:'80%'}}
-            autoplay={false}
-            url={"http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8"}
-            Orientation={Orientation}
-            onStartFullScreen={this.onStartFullScreen}
-            onCloseFullScreen={this.onCloseFullScreen}
-          />*/}
-          <View style={{height:100,width:'100%'}}/>
-        </ScrollView>
+        <VlcSimplePlayer
+          style={{width:'80%'}}
+          url={"rtsp://admin:qweasd234@192.168.44.228:7001/eec330ae-8e56-4a68-e874-b7d353b86db0"}
+          //Orientation={Orientation}
+          onStartFullScreen={this.onStartFullScreen}
+          onCloseFullScreen={this.onCloseFullScreen}
+        />
       </View>
     );
   }
